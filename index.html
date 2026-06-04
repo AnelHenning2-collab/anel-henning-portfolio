@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anél Henning — Design & Technology Portfolio</title>
+  <style>
+    :root {
+      --bg: #0d0d12;
+      --surface: #15151f;
+      --card: #1c1c2b;
+      --border: #2a2a3d;
+      --accent: #7c6bff;
+      --accent2: #ff6b9d;
+      --accent3: #6bffda;
+      --text: #e8e8f0;
+      --muted: #8888aa;
+      --tag-bg: #252538;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #0d0d12 0%, #1a1130 50%, #0d0d12 100%);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 30% 50%, rgba(124,107,255,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 75% 40%, rgba(255,107,157,.14) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 55% 80%, rgba(107,255,218,.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 0 4px rgba(124,107,255,.3), 0 0 40px rgba(124,107,255,.2);
+      position: relative;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #ffffff 0%, #c8c0ff 50%, #ff9dca 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    header .subtitle {
+      margin-top: .5rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+      letter-spacing: .5px;
+      position: relative;
+    }
+
+    .header-tags {
+      margin-top: 1.4rem;
+      display: flex;
+      gap: .6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .header-tags span {
+      background: rgba(124,107,255,.15);
+      border: 1px solid rgba(124,107,255,.3);
+      color: #c0b8ff;
+      font-size: .78rem;
+      padding: .3rem .75rem;
+      border-radius: 999px;
+      letter-spacing: .3px;
+    }
+
+    .contact-row {
+      margin-top: 1.6rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .contact-row a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .88rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      transition: color .2s;
+    }
+
+    .contact-row a:hover { color: var(--accent3); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,18,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .8rem 2rem;
+      display: flex;
+      gap: .25rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    nav::-webkit-scrollbar { display: none; }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .85rem;
+      padding: .4rem .9rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--tag-bg);
+      color: var(--text);
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    section { margin-bottom: 4rem; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section-header p {
+      font-size: .83rem;
+      color: var(--muted);
+      margin-top: .1rem;
+    }
+
+    /* ── CARDS ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .grid-wide {
+      grid-column: 1 / -1;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-accent, linear-gradient(90deg, var(--accent), var(--accent2)));
+      border-radius: 14px 14px 0 0;
+    }
+
+    .card:hover {
+      border-color: rgba(124,107,255,.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.4);
+    }
+
+    .card-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .5rem;
+      line-height: 1.3;
+    }
+
+    .card .desc {
+      font-size: .86rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .card .meta {
+      margin-top: 1rem;
+      padding-top: .9rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--muted);
+      font-size: .73rem;
+      padding: .2rem .6rem;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+    }
+
+    .tag.accent { background: rgba(124,107,255,.15); color: #b8b0ff; border-color: rgba(124,107,255,.3); }
+    .tag.green  { background: rgba(107,255,218,.1);  color: #9dfff0; border-color: rgba(107,255,218,.25); }
+    .tag.pink   { background: rgba(255,107,157,.12); color: #ffb8d2; border-color: rgba(255,107,157,.3); }
+
+    /* ── FEATURED CARD ── */
+    .card-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media(max-width: 600px) {
+      .card-featured { grid-template-columns: 1fr; }
+    }
+
+    .card-featured .feature-visual {
+      background: linear-gradient(135deg, rgba(124,107,255,.15), rgba(255,107,157,.1));
+      border-radius: 10px;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      border: 1px solid var(--border);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+
+    .skill-group h4 {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .9rem;
+    }
+
+    .skill-list { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+    .skill-pill {
+      font-size: .78rem;
+      padding: .25rem .7rem;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* ── STATS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .stat .num {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat .lbl {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: .2rem;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      aspect-ratio: 8.5 / 11;
+      background: #111;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.5);
+      border-color: rgba(124,107,255,.5);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .3s;
+    }
+
+    .gallery-item:hover img { transform: scale(1.03); }
+
+    .gallery-item .page-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.85));
+      padding: .8rem .6rem .4rem;
+      font-size: .72rem;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .3px;
+    }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,.92);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-height: 92vh;
+      max-width: 92vw;
+      border-radius: 8px;
+      box-shadow: 0 0 80px rgba(0,0,0,.8);
+    }
+
+    #lightbox-close {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      opacity: .7;
+      transition: opacity .15s;
+    }
+
+    #lightbox-close:hover { opacity: 1; }
+
+    #lightbox-prev, #lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: white;
+      font-size: 1.4rem;
+      padding: .6rem .9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    #lightbox-prev:hover, #lightbox-next:hover { background: rgba(255,255,255,.2); }
+    #lightbox-prev { left: 1rem; }
+    #lightbox-next { right: 1rem; }
+
+    #lightbox-counter {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.5);
+      font-size: .8rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header>
+  <div class="avatar">AH</div>
+  <h1>Anél Henning</h1>
+  <p class="subtitle">Graphic Design &amp; Technology Portfolio &nbsp;·&nbsp; Rasmussen University</p>
+  <div class="header-tags">
+    <span>Data Visualization</span>
+    <span>Presentation Design</span>
+    <span>Web Analytics</span>
+    <span>Cybersecurity</span>
+    <span>Statistical Analysis</span>
+    <span>Software Engineering</span>
+  </div>
+  <div class="contact-row">
+    <a href="tel:8137431661">📞 813.743.1661</a>
+    <a href="#">🎓 Rasmussen University — B.S. Computer Science</a>
+    <a href="#">🔒 Purdue — Cybersecurity Management (Grad Online)</a>
+  </div>
+</header>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav id="top-nav">
+  <a href="#overview" class="active">Overview</a>
+  <a href="#web-analytics">Web Analytics</a>
+  <a href="#statistics">Statistics</a>
+  <a href="#cybersecurity">Cybersecurity</a>
+  <a href="#software-eng">Software Eng</a>
+  <a href="#skills">Skills</a>
+  <a href="#gallery">All Pages</a>
+</nav>
+
+<!-- ══════════════════ MAIN ══════════════════ -->
+<main>
+
+  <!-- OVERVIEW / STATS -->
+  <section id="overview">
+    <div class="stats-row">
+      <div class="stat"><div class="num">17+</div><div class="lbl">Portfolio Pages</div></div>
+      <div class="stat"><div class="num">8+</div><div class="lbl">Projects Designed</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Disciplines</div></div>
+      <div class="stat"><div class="num">4.0</div><div class="lbl">Academic Standard</div></div>
+    </div>
+
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(124,107,255,.15)">✦</div>
+      <div>
+        <h2>About This Portfolio</h2>
+        <p>Visual and technical design work spanning data, web, and systems</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card" style="--card-accent: linear-gradient(90deg, #7c6bff, #ff6b9d)">
+        <div class="card-label">Background</div>
+        <h3>Graphic Design Rooted in Technology</h3>
+        <p class="desc">
+          This portfolio showcases professional-grade design work produced across multiple disciplines at Rasmussen University and Purdue's Graduate Cybersecurity program. Every piece was built to communicate complex data and technical concepts through clean, purposeful visual design — from infographic slide decks to statistical dashboards and software architecture posters.
+        </p>
+        <div class="meta">
+          <span class="tag accent">Microsoft PowerPoint</span>
+          <span class="tag accent">Microsoft Excel</span>
+          <span class="tag green">Data Visualization</span>
+          <span class="tag pink">Presentation Design</span>
+        </div>
+      </div>
+
+      <div class="card" style="--card-accent: linear-gradient(90deg, #6bffda, #7c6bff)">
+        <div class="card-label">Coursework</div>
+        <h3>Rasmussen University — CS Program</h3>
+        <p class="desc">
+          A full computer science curriculum with emphasis on design, data, and security: Web Analytics, Inferential Statistics, Software Engineering, Quality Assurance, Database Fundamentals, E-Commerce, OS Architecture, and more — each producing portfolio-ready design deliverables.
+        </p>
+        <div class="meta">
+          <span class="tag">18 Courses</span>
+          <span class="tag green">B.S. Computer Science</span>
+          <span class="tag">Capstone Completed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEB ANALYTICS -->
+  <section id="web-analytics">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(107,255,218,.1)">📊</div>
+      <div>
+        <h2>Web Analytics</h2>
+        <p>Professor: Dax Bradley — Rasmussen University</p>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <!-- Project 1 -->
+      <div class="card grid-wide card-featured" style="--card-accent: linear-gradient(90deg, #6bffda, #7c6bff)">
+        <div>
+          <div class="card-label">Case Study · Datalytic Software, LLC©</div>
+          <h3>Web 2.0 Tech Conference — Making Web Analytics Actionable</h3>
+          <p class="desc">
+            Delivered as Sales Executive at Datalytic Software, this presentation-design project covers KPI frameworks, big data pain points, and live case studies for <em>GatesNFences.com</em> and <em>RegalCapitalLenders.com</em>. Designed a full product-comparison chart benchmarking Google Analytics, Spring Metrics, Swot.ly©, Clicky, and Fullstory against each other on price, expertise, and niche.
+          </p>
+          <div class="meta">
+            <span class="tag green">PowerPoint Design</span>
+            <span class="tag">KPI Frameworks</span>
+            <span class="tag">Big Data</span>
+            <span class="tag">Competitive Analysis</span>
+            <span class="tag accent">5 Tools Compared</span>
+          </div>
+        </div>
+        <div class="feature-visual">📈</div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card" style="--card-accent: linear-gradient(90deg, #ff6b9d, #7c6bff)">
+        <div class="card-label">Infographic Design · Kingston-Bryce, LLC©</div>
+        <h3>Cloud Benchmarking Business Case</h3>
+        <p class="desc">
+          Business case comparing cloud benchmarking tools, paired with a student-guidance FAQ from Datalytic Software helping high school students weigh college vs. workforce ROI. Includes a tuition-vs-lifetime-earnings comparison chart from 1993–2013.
+        </p>
+        <div class="meta">
+          <span class="tag pink">Infographic</span>
+          <span class="tag">ROI Analysis</span>
+          <span class="tag">Data Tables</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card" style="--card-accent: linear-gradient(90deg, #7c6bff, #6bffda)">
+        <div class="card-label">Report Design · Datalytic Software, LLC©</div>
+        <h3>Google Analytics vs. Adobe Analytics</h3>
+        <p class="desc">
+          Side-by-side feature analysis designed as a polished report: ROI metrics, predictive analysis capabilities, data aggregation methods, and data visualization tools. Covers fraud prevention analytics and data-sharing compliance recommendations.
+        </p>
+        <div class="meta">
+          <span class="tag accent">Report Layout</span>
+          <span class="tag">Predictive Analytics</span>
+          <span class="tag">Data Viz</span>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="card" style="--card-accent: linear-gradient(90deg, #6bffda, #ff6b9d)">
+        <div class="card-label">Newsletter Design · Datalytic Software, LLC©</div>
+        <h3>TECHS + DATA — Corporate Shakeup Investigative Newsletter</h3>
+        <p class="desc">
+          An editorial-style newsletter layout exploring how companies leverage data analytics to disrupt competitors, optimize services, and protect consumer data. Designed with hierarchy, pull-quotes, and reference citations styled in APA.
+        </p>
+        <div class="meta">
+          <span class="tag green">Newsletter Layout</span>
+          <span class="tag">Editorial Design</span>
+          <span class="tag">APA Citations</span>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="card" style="--card-accent: linear-gradient(90deg, #ff9d6b, #ff6b9d)">
+        <div class="card-label">Dashboard Design · Swot.ly©</div>
+        <h3>Traffic Report &amp; SWOT Analysis Dashboard</h3>
+        <p class="desc">
+          Designed a clickstream analytics dashboard layout including direct traffic reports, referral URLs, query terms, and timestamp data. Visualizes the Swot.ly SWOT analysis showing strengths, weaknesses, and differentiation against Google Analytics.
+        </p>
+        <div class="meta">
+          <span class="tag pink">Dashboard Design</span>
+          <span class="tag">SWOT Layout</span>
+          <span class="tag">Clickstream Viz</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATISTICS -->
+  <section id="statistics">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(255,107,157,.12)">📉</div>
+      <div>
+        <h2>Statistical Analysis &amp; Data Visualization</h2>
+        <p>Professor: Allisha Wise — Inferential Statistics, Rasmussen University</p>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card" style="--card-accent: linear-gradient(90deg, #ff6b9d, #ff9d6b)">
+        <div class="card-label">Data Visualization · USGS</div>
+        <h3>Richter Scale Regression Analysis — San Francisco Bay</h3>
+        <p class="desc">
+          Designed a statistical analysis visual for US Geological Survey data measuring earthquake magnitude vs. depth. Built a scatter plot with regression line (<em>y = 1.1239x + 8.1749</em>), correlation coefficient table, and hypothesis test summary cards — all formatted as a polished one-page data poster.
+        </p>
+        <div class="meta">
+          <span class="tag pink">Scatter Plot</span>
+          <span class="tag">Regression Design</span>
+          <span class="tag">Excel Charts</span>
+          <span class="tag accent">r = 0.1509</span>
+        </div>
+      </div>
+
+      <div class="card" style="--card-accent: linear-gradient(90deg, #7c6bff, #ff6b9d)">
+        <div class="card-label">Statistical Report Design · NCLEX Memorial Hospital©</div>
+        <h3>Infectious Disease — Hypothesis Testing Dashboard</h3>
+        <p class="desc">
+          Designed a multi-panel statistical summary for an infectious disease unit scenario. Includes T-distribution visual, critical value comparison cards, measures of variation explainer, and a plain-language conclusion panel — structured for stakeholder presentation.
+        </p>
+        <div class="meta">
+          <span class="tag accent">Hypothesis Testing</span>
+          <span class="tag">Multi-Panel Layout</span>
+          <span class="tag">T-Distribution</span>
+          <span class="tag green">Stakeholder Deck</span>
+        </div>
+      </div>
+
+      <div class="card" style="--card-accent: linear-gradient(90deg, #6bffda, #7c6bff)">
+        <div class="card-label">Presentation Design · TRUCKS©</div>
+        <h3>Transportation Route Optimization — Statistics for IT</h3>
+        <p class="desc">
+          Created stakeholder presentation for TRUCKS©, a transportation company, visualizing route optimization, fuel efficiency monitoring, load management improvements, and data analytics leverage. Built in PowerPoint and Excel with data charts.
+        </p>
+        <div class="meta">
+          <span class="tag green">Stakeholder Deck</span>
+          <span class="tag">Excel Data</span>
+          <span class="tag">Route Analytics</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CYBERSECURITY -->
+  <section id="cybersecurity">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(124,107,255,.15)">🔒</div>
+      <div>
+        <h2>Cybersecurity &amp; Technology Design</h2>
+        <p>Purdue University — Graduate Cybersecurity Management (Online)</p>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card grid-wide card-featured" style="--card-accent: linear-gradient(90deg, #7c6bff, #6bffda)">
+        <div>
+          <div class="card-label">Concept Visual · Purdue Grad</div>
+          <h3>Smart Assembly Lines + Robotic Arms</h3>
+          <p class="desc">
+            Visual concept design for the convergence of product assembly and robotic vending machines in smart production environments. Illustrates how robots adapt to customer-configured product preferences for efficiency — designed as a high-concept pitch visual for a cybersecurity and automation context.
+          </p>
+          <div class="meta">
+            <span class="tag accent">Concept Design</span>
+            <span class="tag">IoT Visualization</span>
+            <span class="tag green">Robotic Systems</span>
+            <span class="tag">Smart Manufacturing</span>
+          </div>
+        </div>
+        <div class="feature-visual">🤖</div>
+      </div>
+
+      <div class="card" style="--card-accent: linear-gradient(90deg, #ff6b9d, #7c6bff)">
+        <div class="card-label">Academic Paper Design · Encryption Foundation</div>
+        <h3>Historical Development of Cryptography</h3>
+        <p class="desc">
+          Five-page designed paper tracing cryptography from Caesar Cipher and Vigenère Cipher through the Cold War's ITAR regulations, the Clipper Chip controversy, Diffie-Hellman, RSA, and quantum cryptography. Includes styled cipher challenge inserts and APA references.
+        </p>
+        <div class="meta">
+          <span class="tag pink">Document Design</span>
+          <span class="tag">5-Page Report</span>
+          <span class="tag">APA Format</span>
+          <span class="tag accent">Caesar · RSA · Quantum</span>
+        </div>
+      </div>
+
+      <div class="card" style="--card-accent: linear-gradient(90deg, #6bffda, #ff6b9d)">
+        <div class="card-label">Cover Page Design</div>
+        <h3>Portfolio Cover — Cybersecurity Management</h3>
+        <p class="desc">
+          Primary portfolio cover design establishing visual identity across all academic deliverables. Features name treatment, program identification, and contact information in a cohesive typographic layout.
+        </p>
+        <div class="meta">
+          <span class="tag green">Cover Design</span>
+          <span class="tag">Typography</span>
+          <span class="tag">Brand Identity</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOFTWARE ENGINEERING -->
+  <section id="software-eng">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(107,255,218,.1)">⚙️</div>
+      <div>
+        <h2>Software Engineering &amp; QA Design</h2>
+        <p>Professor: Leslie Gruner — Rasmussen University</p>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card" style="--card-accent: linear-gradient(90deg, #6bffda, #7c6bff)">
+        <div class="card-label">Pitch Deck Design · Great Code, Inc.</div>
+        <h3>Acme Company© — SDLC Project Plan Gantt Chart</h3>
+        <p class="desc">
+          Designed a 2021-style pitch deck for Great Code, Inc. presenting to Acme Company. Visual covers all phases of the Software Development Life Cycle (SDLC), structured as a Gantt chart from project kickoff to delivery — formatted in APA-compliant PowerPoint slides.
+        </p>
+        <div class="meta">
+          <span class="tag green">Pitch Deck</span>
+          <span class="tag">Gantt Chart</span>
+          <span class="tag">SDLC Phases</span>
+          <span class="tag accent">APA PowerPoint</span>
+        </div>
+      </div>
+
+      <div class="card" style="--card-accent: linear-gradient(90deg, #ff9d6b, #7c6bff)">
+        <div class="card-label">Educational Presentation · QAS</div>
+        <h3>Quality Assurance Software — Testing Frameworks Overview</h3>
+        <p class="desc">
+          Designed a corporate-ready QAS presentation covering unit testing types, automation test frameworks (linear, modular, data-driven, keyword), CI/CD pipeline design, DevOps integration, and comparison of NUnit, JUnit, and TestNG. Structured for C-suite and developer audiences.
+        </p>
+        <div class="meta">
+          <span class="tag pink">Presentation Design</span>
+          <span class="tag">NUnit · JUnit · TestNG</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">DevOps</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(255,107,157,.12)">✦</div>
+      <div>
+        <h2>Skills &amp; Tools</h2>
+        <p>Technical and design competencies across the full portfolio</p>
+      </div>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <h4>Design Tools</h4>
+        <div class="skill-list">
+          <span class="skill-pill">Microsoft PowerPoint</span>
+          <span class="skill-pill">Microsoft Excel</span>
+          <span class="skill-pill">Data Visualization</span>
+          <span class="skill-pill">Infographic Design</span>
+          <span class="skill-pill">Dashboard Layout</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Analytics &amp; Data</h4>
+        <div class="skill-list">
+          <span class="skill-pill">Web Analytics</span>
+          <span class="skill-pill">Google Analytics</span>
+          <span class="skill-pill">KPI Frameworks</span>
+          <span class="skill-pill">Big Data</span>
+          <span class="skill-pill">Statistical Analysis</span>
+          <span class="skill-pill">Regression Modeling</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Development</h4>
+        <div class="skill-list">
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">SAS Scripts</span>
+          <span class="skill-pill">Network Scripting</span>
+          <span class="skill-pill">Database (ADV)</span>
+          <span class="skill-pill">E-Commerce</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Security &amp; Systems</h4>
+        <div class="skill-list">
+          <span class="skill-pill">Cybersecurity Mgmt</span>
+          <span class="skill-pill">Cryptography</span>
+          <span class="skill-pill">OS Architecture</span>
+          <span class="skill-pill">Software Security</span>
+          <span class="skill-pill">Quality Assurance</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Project &amp; Business</h4>
+        <div class="skill-list">
+          <span class="skill-pill">Business Project Mgmt</span>
+          <span class="skill-pill">Software Engineering</span>
+          <span class="skill-pill">SDLC</span>
+          <span class="skill-pill">Agile Frameworks</span>
+          <span class="skill-pill">Stakeholder Decks</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Soft Skills</h4>
+        <div class="skill-list">
+          <span class="skill-pill">Technical Writing</span>
+          <span class="skill-pill">APA Formatting</span>
+          <span class="skill-pill">Presentation Design</span>
+          <span class="skill-pill">Executive Communication</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PORTFOLIO PAGES GALLERY -->
+  <section id="gallery">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(124,107,255,.15)">🖼</div>
+      <div>
+        <h2>Full Portfolio — All Pages</h2>
+        <p>Click any page to view full size</p>
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)"><img src="portfolio-images/page-01.jpg" alt="Page 1" loading="lazy"><div class="page-label">Cover</div></div>
+      <div class="gallery-item" onclick="openLightbox(1)"><img src="portfolio-images/page-02.jpg" alt="Page 2" loading="lazy"><div class="page-label">Portfolio Intro</div></div>
+      <div class="gallery-item" onclick="openLightbox(2)"><img src="portfolio-images/page-03.jpg" alt="Page 3" loading="lazy"><div class="page-label">TRUCKS© — Route Optimization</div></div>
+      <div class="gallery-item" onclick="openLightbox(3)"><img src="portfolio-images/page-04.jpg" alt="Page 4" loading="lazy"><div class="page-label">Smart Assembly + Robotic Arms</div></div>
+      <div class="gallery-item" onclick="openLightbox(4)"><img src="portfolio-images/page-05.jpg" alt="Page 5" loading="lazy"><div class="page-label">Historical Cryptography Paper</div></div>
+      <div class="gallery-item" onclick="openLightbox(5)"><img src="portfolio-images/page-06.jpg" alt="Page 6" loading="lazy"><div class="page-label">Rasmussen CS Coursework</div></div>
+      <div class="gallery-item" onclick="openLightbox(6)"><img src="portfolio-images/page-07.jpg" alt="Page 7" loading="lazy"><div class="page-label">USGS Richter Scale Analysis</div></div>
+      <div class="gallery-item" onclick="openLightbox(7)"><img src="portfolio-images/page-08.jpg" alt="Page 8" loading="lazy"><div class="page-label">NCLEX Hospital — Hypothesis Test</div></div>
+      <div class="gallery-item" onclick="openLightbox(8)"><img src="portfolio-images/page-09.jpg" alt="Page 9" loading="lazy"><div class="page-label">NCLEX Hospital — Variation Analysis</div></div>
+      <div class="gallery-item" onclick="openLightbox(9)"><img src="portfolio-images/page-10.jpg" alt="Page 10" loading="lazy"><div class="page-label">Datalytic FAQ — College vs Workforce</div></div>
+      <div class="gallery-item" onclick="openLightbox(10)"><img src="portfolio-images/page-11.jpg" alt="Page 11" loading="lazy"><div class="page-label">Google Analytics vs Adobe Analytics</div></div>
+      <div class="gallery-item" onclick="openLightbox(11)"><img src="portfolio-images/page-12.jpg" alt="Page 12" loading="lazy"><div class="page-label">TECHS + DATA Newsletter</div></div>
+      <div class="gallery-item" onclick="openLightbox(12)"><img src="portfolio-images/page-13.jpg" alt="Page 13" loading="lazy"><div class="page-label">Web 2.0 Conference — KPI Design</div></div>
+      <div class="gallery-item" onclick="openLightbox(13)"><img src="portfolio-images/page-14.jpg" alt="Page 14" loading="lazy"><div class="page-label">Product Comparison Chart</div></div>
+      <div class="gallery-item" onclick="openLightbox(14)"><img src="portfolio-images/page-15.jpg" alt="Page 15" loading="lazy"><div class="page-label">Swot.ly© Traffic Report</div></div>
+      <div class="gallery-item" onclick="openLightbox(15)"><img src="portfolio-images/page-16.jpg" alt="Page 16" loading="lazy"><div class="page-label">Acme Company — SDLC Gantt Chart</div></div>
+      <div class="gallery-item" onclick="openLightbox(16)"><img src="portfolio-images/page-17.jpg" alt="Page 17" loading="lazy"><div class="page-label">Quality Assurance — Testing Frameworks</div></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button id="lightbox-prev" onclick="shiftLightbox(-1)">‹</button>
+  <img id="lightbox-img" src="" alt="" />
+  <button id="lightbox-next" onclick="shiftLightbox(1)">›</button>
+  <div id="lightbox-counter"></div>
+</div>
+
+<footer>
+  <p>© 2026 Anél Henning &nbsp;·&nbsp; Rasmussen University B.S. Computer Science &nbsp;·&nbsp; Purdue Cybersecurity Management</p>
+  <p style="margin-top:.5rem"><a href="tel:8137431661">813.743.1661</a></p>
+</footer>
+
+<script>
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Lightbox
+  const pages = [
+    'portfolio-images/page-01.jpg','portfolio-images/page-02.jpg','portfolio-images/page-03.jpg',
+    'portfolio-images/page-04.jpg','portfolio-images/page-05.jpg','portfolio-images/page-06.jpg',
+    'portfolio-images/page-07.jpg','portfolio-images/page-08.jpg','portfolio-images/page-09.jpg',
+    'portfolio-images/page-10.jpg','portfolio-images/page-11.jpg','portfolio-images/page-12.jpg',
+    'portfolio-images/page-13.jpg','portfolio-images/page-14.jpg','portfolio-images/page-15.jpg',
+    'portfolio-images/page-16.jpg','portfolio-images/page-17.jpg'
+  ];
+  let currentPage = 0;
+
+  function openLightbox(idx) {
+    currentPage = idx;
+    document.getElementById('lightbox-img').src = pages[idx];
+    document.getElementById('lightbox-counter').textContent = `${idx + 1} / ${pages.length}`;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function shiftLightbox(dir) {
+    openLightbox((currentPage + dir + pages.length) % pages.length);
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') shiftLightbox(-1);
+    if (e.key === 'ArrowRight') shiftLightbox(1);
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
