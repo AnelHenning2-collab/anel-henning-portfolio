@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anel Henning — Campaign Moodboards</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #111; color: white; }
+
+/* NAV */
+.top-nav { position: sticky; top: 0; z-index: 100; background: rgba(17,17,17,0.95); backdrop-filter: blur(10px); padding: 16px 60px; display: flex; gap: 32px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.top-nav a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.top-nav a:hover { color: white; }
+.top-nav .nav-brand { font-family: 'Playfair Display', serif; font-size: 16px; color: white; margin-right: 20px; }
+
+/* HERO */
+.hero { padding: 80px 60px; background: linear-gradient(135deg, #111 0%, #1a1a2e 100%); }
+.hero-tag { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: #C9A84C; margin-bottom: 20px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; line-height: 1.05; margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: #C9A84C; font-weight: 400; }
+.hero p { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 600px; line-height: 1.85; }
+
+/* AGENCY SECTION */
+.agency-section { padding: 80px 60px; border-top: 1px solid rgba(255,255,255,0.06); }
+.agency-section:nth-child(odd) { background: #111; }
+.agency-section:nth-child(even) { background: #0D0D0D; }
+
+.section-header { margin-bottom: 60px; }
+.section-num { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: rgba(255,255,255,0.03); line-height: 1; margin-bottom: -24px; }
+.section-agency { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; margin-bottom: 16px; }
+.section-desc { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.8; }
+
+/* MOODBOARD CARD */
+.moodboard { margin-bottom: 80px; }
+.mb-title { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 6px; }
+.mb-subtitle { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 30px; }
+
+.mb-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.mb-grid-2 { grid-template-columns: 2fr 1fr; }
+.mb-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+/* PHOTO DIRECTION BLOCKS */
+.photo-block { border-radius: 6px; overflow: hidden; position: relative; }
+.photo-block .photo-sim { width: 100%; display: flex; align-items: flex-end; padding: 20px; position: relative; overflow: hidden; }
+.photo-block .photo-label { position: absolute; top: 12px; left: 12px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 20px; }
+.photo-block .photo-caption { position: relative; z-index: 1; }
+.photo-block .photo-caption h5 { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.photo-block .photo-caption p { font-size: 10px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+/* COLOR PALETTE */
+.palette-block { background: #1A1A1A; border-radius: 6px; padding: 20px; }
+.palette-block h5 { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.swatches { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.swatch { border-radius: 4px; }
+.swatch-info { margin-top: 6px; }
+.swatch-name { font-size: 10px; font-weight: 600; }
+.swatch-hex { font-size: 9px; color: rgba(255,255,255,0.4); }
+
+/* TYPOGRAPHY BLOCK */
+.type-block { background: #1A1A1A; border-radius: 6px; padding: 24px; }
+.type-block h5 { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+.type-pair { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.type-pair:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.type-role { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+.type-specimen { line-height: 1.1; }
+.type-meta { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 6px; }
+
+/* COMPOSITION GUIDE */
+.comp-block { background: #1A1A1A; border-radius: 6px; padding: 20px; }
+.comp-block h5 { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.comp-sketch { background: #111; border-radius: 4px; padding: 16px; margin-bottom: 12px; position: relative; min-height: 120px; }
+.comp-rule { font-size: 11px; color: rgba(255,255,255,0.55); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.6; }
+.comp-rule:last-child { border-bottom: none; }
+.comp-rule::before { content: '→ '; color: rgba(255,255,255,0.25); }
+
+/* PHOTO DIRECTION PANEL */
+.photo-dir { background: #1A1A1A; border-radius: 6px; padding: 20px; }
+.photo-dir h5 { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.dir-item { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+.dir-icon { width: 32px; height: 32px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.dir-text h6 { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+.dir-text p { font-size: 10px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+/* FEEL TAGS */
+.feel-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.feel-tag { font-size: 10px; padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); }
+
+/* REFERENCE BOARD */
+.ref-board { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 24px; }
+.ref-cell { border-radius: 6px; height: 120px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; position: relative; overflow: hidden; }
+.ref-cell .ref-label { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.7); position: relative; z-index: 1; }
+.ref-cell .ref-source { font-size: 8px; color: rgba(255,255,255,0.4); margin-top: 3px; position: relative; z-index: 1; }
+
+.divider { height: 1px; background: rgba(255,255,255,0.06); margin: 50px 0; }
+
+/* ============ AGENCY-SPECIFIC COLORS ============ */
+
+/* 1. SPARXOO — Navy + Gold */
+.sp { --acc: #C9A84C; --bg1: #0D1B2A; --bg2: #1a3050; }
+.sp .section-agency { color: #C9A84C; }
+.sp .mb-subtitle { color: rgba(201,168,76,0.6); }
+
+/* 2. SCHIFINO — Slate + Rust */
+.sl { --acc: #B5451B; --bg1: #1C2B3A; --bg2: #2a3d52; }
+.sl .section-agency { color: #E07A5A; }
+
+/* 3. MOJO — Teal + Orange */
+.mj { --acc: #007B7F; --bg1: #0D2233; --bg2: #143348; }
+.mj .section-agency { color: #4ECDC4; }
+
+/* 4. BRAVADA — Forest + Champagne */
+.bv { --acc: #C9A96E; --bg1: #1E2E21; --bg2: #2A3D2E; }
+.bv .section-agency { color: #C9A96E; }
+
+/* 5. INHOUSE — Navy + Gold */
+.ih { --acc: #B8962E; --bg1: #001a57; --bg2: #003087; }
+.ih .section-agency { color: #B8962E; }
+
+footer { padding: 60px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+footer .brand { font-family: 'Playfair Display', serif; font-size: 20px; }
+footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <span class="nav-brand">Anel Henning</span>
+  <a href="#sparxoo">Sparxoo</a>
+  <a href="#schifino">Schifino Lee</a>
+  <a href="#mojo">Mojo Media</a>
+  <a href="#bravada">Bravada</a>
+  <a href="#inhouse">In-House</a>
+  <a href="portfolio_index.html">← Back to Portfolio</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Creative Direction · Art Direction · Visual Language</div>
+  <h1>Campaign<br><em>Moodboards</em></h1>
+  <p>Photography direction, typography pairings, color systems, composition rules, and visual references for every campaign across all five agencies. Use these as your brief before opening Photoshop.</p>
+</div>
+
+<!-- ===================== SPARXOO ===================== -->
+<div class="agency-section sp" id="sparxoo">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-agency">Brand Strategy + Digital · Tampa</div>
+    <div class="section-title">Sparxoo</div>
+    <div class="section-desc">Clean, confident, data-informed design. Sparxoo clients are growth-stage brands that want to look established. Photography is intentional and human. Typography is always legible at small sizes.</div>
+  </div>
+
+  <!-- PIECE 1: Roots & Rise -->
+  <div class="moodboard">
+    <div class="mb-title">01 — Roots & Rise Financial Wellness</div>
+    <div class="mb-subtitle">Brand Identity + Digital Display Campaign</div>
+
+    <!-- REFERENCE BOARD -->
+    <div class="ref-board">
+      <div class="ref-cell" style="background: linear-gradient(160deg,#0D1B2A,#1a3050);">
+        <div class="ref-label">Anchor Color</div><div class="ref-source">Deep Navy — Trust + Authority</div>
+      </div>
+      <div class="ref-cell" style="background: linear-gradient(160deg,#C9A84C,#A8882A);">
+        <div class="ref-label">Accent Color</div><div class="ref-source">Warm Gold — Aspiration</div>
+      </div>
+      <div class="ref-cell" style="background: linear-gradient(160deg,#3D2B1F,#5C4030); display:flex; align-items:center; justify-content:center;">
+        <span style="font-family:'Playfair Display',serif; font-size:28px; color:#C9A84C; font-weight:900;">R</span>
+        <div style="position:absolute; bottom:12px; left:12px;"><div class="ref-label">Logomark</div><div class="ref-source">Serif Monogram</div></div>
+      </div>
+      <div class="ref-cell" style="background:#F5F0E8; display:flex; align-items:center; justify-content:center;">
+        <div style="color:#0D1B2A; text-align:center;">
+          <div style="font-family:'Playfair Display',serif; font-size:13px; line-height:1.3; font-weight:700;">Your money.<br>Your first chapter.</div>
+        </div>
+        <div style="position:absolute; bottom:12px; left:12px;"><div class="ref-label" style="color:rgba(0,0,0,0.4);">Cream BG</div><div class="ref-source" style="color:rgba(0,0,0,0.3);">Warmth + Paper Feel</div></div>
+      </div>
+    </div>
+
+    <div class="mb-grid">
+      <!-- PALETTE -->
+      <div class="palette-block">
+        <h5>Color Palette</h5>
+        <div class="swatches">
+          <div><div class="swatch" style="width:56px;height:56px;background:#0D1B2A;"></div><div class="swatch-info"><div class="swatch-name">Deep Navy</div><div class="swatch-hex">#0D1B2A</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#C9A84C;"></div><div class="swatch-info"><div class="swatch-name">Warm Gold</div><div class="swatch-hex">#C9A84C</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#F5F0E8;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><div class="swatch-name" style="color:#ccc;">Cream</div><div class="swatch-hex">#F5F0E8</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#6B8F71;"></div><div class="swatch-info"><div class="swatch-name">Sage</div><div class="swatch-hex">#6B8F71</div></div></div>
+        </div>
+        <div class="feel-tags">
+          <span class="feel-tag">Aspirational</span><span class="feel-tag">Trustworthy</span><span class="feel-tag">Warm</span><span class="feel-tag">First-Gen</span>
+        </div>
+      </div>
+
+      <!-- TYPOGRAPHY -->
+      <div class="type-block">
+        <h5>Typography System</h5>
+        <div class="type-pair">
+          <div class="type-role">Display / Headline</div>
+          <div class="type-specimen" style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:#C9A84C;">Build wealth.<br>Not just a balance.</div>
+          <div class="type-meta">Playfair Display Bold · 32–48px · Gold on Dark</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Body / Supporting</div>
+          <div class="type-specimen" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6;">One clear step at a time — from paycheck to portfolio.</div>
+          <div class="type-meta">Inter Regular · 12–14px · 60% white</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">CTA / Label</div>
+          <div class="type-specimen" style="font-family:'Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#C9A84C;">Start Free Today</div>
+          <div class="type-meta">Inter Bold · ALL CAPS · 2px tracking</div>
+        </div>
+      </div>
+
+      <!-- PHOTO DIRECTION -->
+      <div class="photo-dir">
+        <h5>Photography Direction</h5>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(201,168,76,0.15);">📱</div>
+          <div class="dir-text"><h6>Subject Matter</h6><p>Hands holding a phone showing a savings graph. A person at a kitchen table with a laptop and coffee — not a corner office. Real domestic spaces, not aspirational fantasy.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(201,168,76,0.15);">🌅</div>
+          <div class="dir-text"><h6>Lighting</h6><p>Warm morning light. Golden hour tones. Soft shadows — hopeful, not harsh. Think: a new day starting, not a corporate boardroom.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(201,168,76,0.15);">🎨</div>
+          <div class="dir-text"><h6>Color Treatment</h6><p>Warm grade — pull up the oranges, desaturate cool shadows. Skin tones should feel warm and natural. Avoid blue-toned corporate stock photo look.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(201,168,76,0.15);">❌</div>
+          <div class="dir-text"><h6>Avoid</h6><p>Suits, corner offices, Wall Street imagery, confetti, overjoyed stock photo expressions. No imagery that signals inherited wealth.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPOSITION RULES -->
+    <div class="comp-block">
+      <h5>Composition Rules for All Sizes</h5>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div>
+          <div class="comp-rule">Place brand mark top-left or top-center, never bottom</div>
+          <div class="comp-rule">Headline takes 50–60% of the vertical space on 300×250</div>
+          <div class="comp-rule">CTA button always gold — never white or outlined on dark backgrounds</div>
+          <div class="comp-rule">Decorative circle element (partial, off-edge) on all dark-bg ads</div>
+        </div>
+        <div>
+          <div class="comp-rule">Minimum 20px padding on all sides — never let type touch the edge</div>
+          <div class="comp-rule">Body copy never competes with headline — reduce to 60% opacity</div>
+          <div class="comp-rule">Leaderboard: left-align brand mark, center copy, right-align CTA</div>
+          <div class="comp-rule">One photo maximum per ad unit — never use photo collages</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PIECE 2: Glossier -->
+  <div class="moodboard">
+    <div class="mb-title">02 — Glossier "Skin First"</div>
+    <div class="mb-subtitle">Beauty Campaign · Instagram + Display + Print</div>
+
+    <div class="ref-board">
+      <div class="ref-cell" style="background:linear-gradient(160deg,#F9EDE0,#EDD5BC);">
+        <div class="ref-label" style="color:rgba(0,0,0,0.5);">Base Tone</div><div class="ref-source" style="color:rgba(0,0,0,0.35);">Skin — not beige</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#D4A67A,#C08A5C);">
+        <div class="ref-label">Mid Tone</div><div class="ref-source">Terracotta Warmth</div>
+      </div>
+      <div class="ref-cell" style="background:#3D2B1F; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:18px; color:#F9EDE0; font-style:italic; text-align:center; line-height:1.3;">Less product.<br>More you.</div>
+        <div style="position:absolute; bottom:12px; left:12px;"><div class="ref-label">Dark Type on Warm BG</div></div>
+      </div>
+      <div class="ref-cell" style="background:#F9EDE0; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:#3D2B1F; font-style:italic;">Skin first.</div>
+        <div style="position:absolute; bottom:12px; left:12px;"><div class="ref-label" style="color:rgba(0,0,0,0.4);">Negative Space</div><div class="ref-source" style="color:rgba(0,0,0,0.3);">Let the skin breathe</div></div>
+      </div>
+    </div>
+
+    <div class="mb-grid">
+      <div class="palette-block">
+        <h5>Color Palette — Derived From Skin</h5>
+        <div class="swatches">
+          <div><div class="swatch" style="width:56px;height:56px;background:#F9EDE0;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><div class="swatch-name" style="color:#ccc;">Linen</div><div class="swatch-hex">#F9EDE0</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#E8C9A8;"></div><div class="swatch-info"><div class="swatch-name">Blush</div><div class="swatch-hex">#E8C9A8</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#C08A5C;"></div><div class="swatch-info"><div class="swatch-name">Terracotta</div><div class="swatch-hex">#C08A5C</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#3D2B1F;"></div><div class="swatch-info"><div class="swatch-name">Espresso</div><div class="swatch-hex">#3D2B1F</div></div></div>
+        </div>
+        <div class="feel-tags">
+          <span class="feel-tag">Intimate</span><span class="feel-tag">Editorial</span><span class="feel-tag">Unfiltered</span><span class="feel-tag">Quiet Confidence</span>
+        </div>
+      </div>
+
+      <div class="type-block">
+        <h5>Typography — Editorial Beauty</h5>
+        <div class="type-pair">
+          <div class="type-role">Headline Font</div>
+          <div class="type-specimen" style="font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:300; font-style:italic; color:#F9EDE0;">Skin first.<br>Makeup second.</div>
+          <div class="type-meta">Cormorant Garamond Light Italic · 36–48px · Never bold</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Body / Product Name</div>
+          <div class="type-specimen" style="font-family:'Inter',sans-serif; font-size:11px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.6);">Perfecting Skin Tint</div>
+          <div class="type-meta">Inter Light · ALL CAPS · 3px tracking · Whisper-quiet</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">CTA Style</div>
+          <div class="type-specimen" style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#3D2B1F; border-bottom:1px solid #3D2B1F; width:fit-content; padding-bottom:2px;">Shop Now</div>
+          <div class="type-meta">Underline-style CTA only — never use a button box for Glossier</div>
+        </div>
+      </div>
+
+      <div class="photo-dir">
+        <h5>Photography Direction</h5>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(192,138,92,0.2);">✋</div>
+          <div class="dir-text"><h6>Hero Shot</h6><p>Extreme close-up of skin texture — a cheekbone, a collarbone, the bridge of a nose. No full-face shots. Skin is the landscape, not the face.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(192,138,92,0.2);">☀️</div>
+          <div class="dir-text"><h6>Lighting</h6><p>Natural window light, slightly overexposed. Let the highlights blow out softly. No studio strobes — this is a Sunday morning, not a photoshoot.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(192,138,92,0.2);">🎞</div>
+          <div class="dir-text"><h6>Color Grade</h6><p>Warm and slightly desaturated. Pull the shadows into brown, not blue. Think film photograph left in the sun. Not Instagram-filtered.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(192,138,92,0.2);">❌</div>
+          <div class="dir-text"><h6>Never</h6><p>Heavy retouching, pore-erasing, skin smoothing filters. The point is texture. A smoothed-out face defeats the entire campaign concept.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCHIFINO LEE ===================== -->
+<div class="agency-section sl" id="schifino">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-agency">Full-Service Integrated · Tampa</div>
+    <div class="section-title">Schifino Lee</div>
+    <div class="section-desc">Print-first thinking applied to digital. Strong typographic hierarchy. Photography is editorial and purposeful. Every ad should work equally well on a billboard and in a magazine.</div>
+  </div>
+
+  <!-- Healthcare -->
+  <div class="moodboard">
+    <div class="mb-title">01 — Tampa General Hospital</div>
+    <div class="mb-subtitle">Healthcare Campaign · Print + Display + Broadcast</div>
+
+    <div class="ref-board">
+      <div class="ref-cell" style="background:linear-gradient(160deg,#F8F4EF,#EEE5D8);">
+        <div class="ref-label" style="color:rgba(0,0,0,0.4);">Background</div><div class="ref-source" style="color:rgba(0,0,0,0.3);">Warm clinical white</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#0A3D6B,#1C5C8A);">
+        <div class="ref-label">Trust Blue</div><div class="ref-source">Medical authority</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#B5451B,#8A3214);">
+        <div class="ref-label">Accent Rust</div><div class="ref-source">Warmth + humanity</div>
+      </div>
+      <div class="ref-cell" style="background:#F8F4EF; display:flex; align-items:center; padding:16px;">
+        <div style="font-family:'DM Serif Display',serif; font-size:13px; color:#1C2B3A; line-height:1.3;">When it matters most, you want the team that's done it ten thousand times.</div>
+        <div style="position:absolute; bottom:12px; right:12px;"><div class="ref-label" style="color:rgba(0,0,0,0.4);">Headline Feel</div></div>
+      </div>
+    </div>
+
+    <div class="mb-grid">
+      <div class="palette-block">
+        <h5>Color System — Clinical Warmth</h5>
+        <div class="swatches">
+          <div><div class="swatch" style="width:56px;height:56px;background:#F8F4EF;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><div class="swatch-name" style="color:#ccc;">Warm White</div><div class="swatch-hex">#F8F4EF</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#1C5C8A;"></div><div class="swatch-info"><div class="swatch-name">Trust Blue</div><div class="swatch-hex">#1C5C8A</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#B5451B;"></div><div class="swatch-info"><div class="swatch-name">Warm Rust</div><div class="swatch-hex">#B5451B</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#1C2B3A;"></div><div class="swatch-info"><div class="swatch-name">Charcoal</div><div class="swatch-hex">#1C2B3A</div></div></div>
+        </div>
+        <div class="feel-tags"><span class="feel-tag">Reassuring</span><span class="feel-tag">Expert</span><span class="feel-tag">Human</span><span class="feel-tag">Confident</span></div>
+      </div>
+
+      <div class="type-block">
+        <h5>Typography — Editorial Medical</h5>
+        <div class="type-pair">
+          <div class="type-role">Print Headline</div>
+          <div class="type-specimen" style="font-family:'DM Serif Display',serif; font-size:26px; color:white; line-height:1.2;">When it matters most, you want the team that's done it ten thousand times.</div>
+          <div class="type-meta">DM Serif Display · 36–52px for print · Left-aligned always</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Body Copy</div>
+          <div class="type-specimen" style="font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.7;">Nationally ranked care. Right here in Tampa Bay.</div>
+          <div class="type-meta">Inter Regular · 12–14px · Never centered</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Rule / Divider Element</div>
+          <div style="display:flex; align-items:center; gap:12px; margin-top:8px;"><div style="width:40px;height:3px;background:#B5451B;"></div><div style="font-size:10px;color:rgba(255,255,255,0.4);">Use rust accent bar to separate headline from body</div></div>
+        </div>
+      </div>
+
+      <div class="photo-dir">
+        <h5>Photography Direction</h5>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(28,92,138,0.2);">🏥</div>
+          <div class="dir-text"><h6>Subject Matter</h6><p>Hands — a surgeon's gloved hands, a nurse's hands on a patient's arm. Hands communicate competence and care simultaneously. No happy stock photo hospital hallway shots.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(28,92,138,0.2);">💡</div>
+          <div class="dir-text"><h6>Lighting</h6><p>Soft, directional natural light from a window. Not clinical overhead fluorescent. The light should say "this is a place where healing happens," not "this is an institution."</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(28,92,138,0.2);">🖼</div>
+          <div class="dir-text"><h6>Composition</h6><p>Wide negative space on the right for print — the headline lives in white space beside the image. Portrait format for digital. Photo always bleeds to edge, type in safe zone.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(28,92,138,0.2);">❌</div>
+          <div class="dir-text"><h6>Never</h6><p>Smiling doctors in white coats, happy families in waiting rooms, generic hospital stock. Every healthcare brand uses those. None of them are memorable.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- LIGHTNING -->
+  <div class="moodboard">
+    <div class="mb-title">02 — Tampa Bay Lightning "The Ice Is Back"</div>
+    <div class="mb-subtitle">Sports Campaign · OOH Billboard + Digital</div>
+
+    <div class="ref-board">
+      <div class="ref-cell" style="background:linear-gradient(135deg,#00205B,#003D9C);">
+        <div class="ref-label">Lightning Navy</div><div class="ref-source">#00205B official</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(135deg,#00205B,#003D9C); display:flex; align-items:center; justify-content:center;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:40px; color:#C8F0FF; letter-spacing:2px;">THE ICE<br>IS BACK.</span>
+        <div style="position:absolute; bottom:12px; left:12px;"><div class="ref-label">Bebas Neue — Impact type</div></div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#C8F0FF,#96D4FF);">
+        <div class="ref-label" style="color:rgba(0,32,91,0.7);">Ice Blue</div><div class="ref-source" style="color:rgba(0,32,91,0.5);">Lightning bolt + highlights</div>
+      </div>
+      <div class="ref-cell" style="background:radial-gradient(circle at 30% 50%, #003D9C, #00205B); display:flex; align-items:center; justify-content:center;">
+        <div style="color:#C8F0FF; font-size:48px;">⚡</div>
+        <div style="position:absolute; bottom:12px; left:12px;"><div class="ref-label">Motion Blur FX</div><div class="ref-source">Speed + electricity</div></div>
+      </div>
+    </div>
+
+    <div class="mb-grid">
+      <div class="palette-block">
+        <h5>Color System — Electric Energy</h5>
+        <div class="swatches">
+          <div><div class="swatch" style="width:56px;height:56px;background:#00205B;"></div><div class="swatch-info"><div class="swatch-name">Team Navy</div><div class="swatch-hex">#00205B</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#C8F0FF;"></div><div class="swatch-info"><div class="swatch-name">Ice Blue</div><div class="swatch-hex">#C8F0FF</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#FFFFFF;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#0052CC;"></div><div class="swatch-info"><div class="swatch-name">Electric Blue</div><div class="swatch-hex">#0052CC</div></div></div>
+        </div>
+        <div class="feel-tags"><span class="feel-tag">Electric</span><span class="feel-tag">Fast</span><span class="feel-tag">Cold</span><span class="feel-tag">Powerful</span></div>
+      </div>
+
+      <div class="type-block">
+        <h5>Typography — Maximum Impact</h5>
+        <div class="type-pair">
+          <div class="type-role">Billboard Headline</div>
+          <div class="type-specimen" style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:#C8F0FF; letter-spacing:3px; line-height:0.9;">THE ICE<br>IS BACK.</div>
+          <div class="type-meta">Bebas Neue · 96–120px on billboard · Full width, no padding feel</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Subhead / Date</div>
+          <div class="type-specimen" style="font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:rgba(200,240,255,0.7);">Are you? · GoBolts.com</div>
+          <div class="type-meta">Space Grotesk Medium · ALL CAPS · 4px tracking</div>
+        </div>
+      </div>
+
+      <div class="photo-dir">
+        <h5>Photography + FX Direction</h5>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(0,52,204,0.3);">⚡</div>
+          <div class="dir-text"><h6>Hero Imagery</h6><p>Player in motion — extreme motion blur on the stick and puck, sharp face. The player is frozen mid-action. Ice spray catching blue-white light at the camera.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(0,52,204,0.3);">🎆</div>
+          <div class="dir-text"><h6>Light FX</h6><p>Backlit ice spray treated as electric light particles. The bolt becomes a light source, not a shape. Use lens flare and glow — this is a sports campaign, not a luxury brand.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(0,52,204,0.3);">📐</div>
+          <div class="dir-text"><h6>Composition for Billboard</h6><p>Type takes left 40% of the board. Image bleeds from center-right to right edge. Lightning bolt overlaps both zones as a graphic element — not just a logo.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(0,52,204,0.3);">❌</div>
+          <div class="dir-text"><h6>Never</h6><p>Posed team photos, product shots, cheerful fan crowd shots. This is a hype campaign — it should feel like electricity, not a welcome mat.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MOJO MEDIA ===================== -->
+<div class="agency-section mj" id="mojo">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-agency">Inbound Marketing · HubSpot Partner · Tampa</div>
+    <div class="section-title">Mojo Media Labs</div>
+    <div class="section-desc">Conversion-first design. Every element earns its place by serving the user's decision. Photography is professional but approachable. Typography is clean and hierarchy is everything.</div>
+  </div>
+
+  <div class="moodboard">
+    <div class="mb-title">01 — ClearShield Cybersecurity Landing Page</div>
+    <div class="mb-subtitle">B2B SaaS · HubSpot Landing Page + LinkedIn Ads</div>
+
+    <div class="ref-board">
+      <div class="ref-cell" style="background:linear-gradient(160deg,#0D2233,#164060);">
+        <div class="ref-label">Dark Authority</div><div class="ref-source">B2B trust signal</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#007B7F,#005F63);">
+        <div class="ref-label">Teal — Action</div><div class="ref-source">CTA + highlights</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#E86825,#C04F10);">
+        <div class="ref-label">Orange — Urgency</div><div class="ref-source">Primary CTA button only</div>
+      </div>
+      <div class="ref-cell" style="background:#EBF1FA; display:flex; align-items:center; padding:16px;">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:14px; color:#0D2233; font-weight:600; line-height:1.3; margin-bottom:8px;">Stop a breach before it costs you everything.</div>
+          <div style="background:#E86825; color:white; font-size:9px; font-weight:700; padding:6px 12px; border-radius:3px; width:fit-content; letter-spacing:1px; text-transform:uppercase;">Request Demo →</div>
+        </div>
+        <div style="position:absolute; bottom:12px; right:12px;"><div class="ref-label" style="color:rgba(0,0,0,0.4);">CTA Pattern</div></div>
+      </div>
+    </div>
+
+    <div class="mb-grid">
+      <div class="palette-block">
+        <h5>Color System — B2B Trust</h5>
+        <div class="swatches">
+          <div><div class="swatch" style="width:56px;height:56px;background:#0D2233;"></div><div class="swatch-info"><div class="swatch-name">Deep Navy</div><div class="swatch-hex">#0D2233</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#007B7F;"></div><div class="swatch-info"><div class="swatch-name">Teal</div><div class="swatch-hex">#007B7F</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#E86825;"></div><div class="swatch-info"><div class="swatch-name">CTA Orange</div><div class="swatch-hex">#E86825</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#EBF1FA;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><div class="swatch-name" style="color:#ccc;">Light Blue</div><div class="swatch-hex">#EBF1FA</div></div></div>
+        </div>
+        <div class="feel-tags"><span class="feel-tag">Trustworthy</span><span class="feel-tag">Urgent</span><span class="feel-tag">Technical</span><span class="feel-tag">Approachable</span></div>
+      </div>
+
+      <div class="type-block">
+        <h5>Typography — Conversion-First</h5>
+        <div class="type-pair">
+          <div class="type-role">Page Headline</div>
+          <div class="type-specimen" style="font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:700; color:white; line-height:1.15;">Stop a breach before it costs you everything.</div>
+          <div class="type-meta">Space Grotesk Bold · 40–52px · Consequence-led copy</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Sub-headline</div>
+          <div class="type-specimen" style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.65); line-height:1.7;">No IT department required. Setup in 60 minutes.</div>
+          <div class="type-meta">Inter Regular · Accessibility + ease language</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">CTA Button</div>
+          <div style="background:#E86825; color:white; font-size:11px; font-weight:700; padding:12px 20px; border-radius:3px; width:fit-content; letter-spacing:1px; text-transform:uppercase; margin-top:8px;">Request Your Free Demo →</div>
+          <div class="type-meta">Orange only · Never teal for CTA · Arrow adds momentum</div>
+        </div>
+      </div>
+
+      <div class="photo-dir">
+        <h5>Photography Direction — B2B</h5>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(0,123,127,0.2);">💻</div>
+          <div class="dir-text"><h6>Subject Matter</h6><p>A business owner at a laptop — not a server room. Real office environments, not data center stock. The product is approachable, not enterprise-scary.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(0,123,127,0.2);">📊</div>
+          <div class="dir-text"><h6>UI Screenshots</h6><p>The dashboard interface as a visual element — placed on a device mockup (laptop or phone). Clean UI on screen = product credibility without explaining features.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(0,123,127,0.2);">🔒</div>
+          <div class="dir-text"><h6>Iconography</h6><p>Custom icons for feature sections — shield, lock, dashboard, person. Never use flat icon library defaults. These should feel like they belong to the brand.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(0,123,127,0.2);">❌</div>
+          <div class="dir-text"><h6>Never</h6><p>Binary code backgrounds, anonymous hooded hacker imagery, red warning screens. All cybersecurity clichés that reinforce fear instead of confidence.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== BRAVADA ===================== -->
+<div class="agency-section bv" id="bravada">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-agency">Boutique Brand Identity · Tampa</div>
+    <div class="section-title">Bravada International</div>
+    <div class="section-desc">Restraint is the design. Every element is chosen, not accumulated. Photography is editorial-grade. Typography is refined and deliberate. White space is not emptiness — it is the product.</div>
+  </div>
+
+  <div class="moodboard">
+    <div class="mb-title">01 — Aurum Luxury Skincare</div>
+    <div class="mb-subtitle">Complete Brand Identity · Packaging · Editorial</div>
+
+    <div class="ref-board">
+      <div class="ref-cell" style="background:linear-gradient(160deg,#1A1A1A,#2C2C2C);">
+        <div class="ref-label">Matte Black</div><div class="ref-source">Authority — not aggressive</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#C9A96E,#A8852A);">
+        <div class="ref-label">Champagne</div><div class="ref-source">Not gold — taste, not wealth</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#2A3D2E,#1E2E21);">
+        <div class="ref-label">Forest Green</div><div class="ref-source">Botanical — grounded luxury</div>
+      </div>
+      <div class="ref-cell" style="background:#F7F4EF; display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#1A1A1A; font-style:italic; letter-spacing:2px;">Aurum</div>
+          <div style="font-size:8px; letter-spacing:6px; text-transform:uppercase; color:#C9A96E; margin-top:6px;">Skin Care</div>
+        </div>
+        <div style="position:absolute; bottom:12px; left:12px;"><div class="ref-label" style="color:rgba(0,0,0,0.4);">Logo Feel</div></div>
+      </div>
+    </div>
+
+    <div class="mb-grid">
+      <div class="palette-block">
+        <h5>Color System — Restrained Luxury</h5>
+        <div class="swatches">
+          <div><div class="swatch" style="width:56px;height:56px;background:#1A1A1A;"></div><div class="swatch-info"><div class="swatch-name">Matte Black</div><div class="swatch-hex">#1A1A1A</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#C9A96E;"></div><div class="swatch-info"><div class="swatch-name">Champagne</div><div class="swatch-hex">#C9A96E</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#2A3D2E;"></div><div class="swatch-info"><div class="swatch-name">Forest</div><div class="swatch-hex">#2A3D2E</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#F7F4EF;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><div class="swatch-name" style="color:#ccc;">Ivory</div><div class="swatch-hex">#F7F4EF</div></div></div>
+        </div>
+        <div class="feel-tags"><span class="feel-tag">Refined</span><span class="feel-tag">Scientific</span><span class="feel-tag">Botanical</span><span class="feel-tag">Quiet Luxury</span></div>
+      </div>
+
+      <div class="type-block">
+        <h5>Typography — Refined Luxury</h5>
+        <div class="type-pair">
+          <div class="type-role">Brand Name / Display</div>
+          <div class="type-specimen" style="font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:300; color:#C9A96E; font-style:italic; letter-spacing:4px;">Aurum</div>
+          <div class="type-meta">Cormorant Garamond Light Italic · Generous tracking · Never bold</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Campaign Headline</div>
+          <div class="type-specimen" style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:#F7F4EF; font-style:italic; line-height:1.2;">Skin that speaks for itself.</div>
+          <div class="type-meta">Cormorant Garamond Light Italic · 28–36px · Never sans-serif for headlines</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Product Info / CTA</div>
+          <div class="type-specimen" style="font-family:'Inter',sans-serif; font-size:9px; font-weight:300; letter-spacing:5px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Vitamin C Complex · 30ml</div>
+          <div class="type-meta">Inter Light · ALL CAPS · 5px tracking · Nearly invisible — intentional</div>
+        </div>
+      </div>
+
+      <div class="photo-dir">
+        <h5>Photography Direction — Editorial Luxury</h5>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(201,169,110,0.15);">🫙</div>
+          <div class="dir-text"><h6>Product Photography</h6><p>Single bottle on matte black or ivory surface. One prop maximum — a sprig of botanical ingredient, a piece of raw material. Never multiple products in one frame.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(201,169,110,0.15);">🕯</div>
+          <div class="dir-text"><h6>Lighting</h6><p>Chiaroscuro — strong directional light from one side, deep shadows on the other. The product should emerge from darkness, not sit in flat studio light. Think Vermeer, not Amazon product listing.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(201,169,110,0.15);">🌿</div>
+          <div class="dir-text"><h6>Texture + Material</h6><p>Linen, marble, raw stone, botanical leaves — physical textures as background. Never printed paper, never plastic. The materials around the product signal the product's tier.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(201,169,110,0.15);">❌</div>
+          <div class="dir-text"><h6>Never</h6><p>Bright studio white backgrounds, multiple products scattered, lifestyle photos of people using the product. The product does not need a person to validate it. It stands alone.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <h5>The Luxury Composition Rules — Apply to Every Bravada Piece</h5>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div>
+          <div class="comp-rule">50% of every layout must be empty space — this is not waste, it is the design</div>
+          <div class="comp-rule">Never center-align both the image AND the type — one must anchor left</div>
+          <div class="comp-rule">One typeface maximum per layout — weight and size create hierarchy, not different fonts</div>
+          <div class="comp-rule">CTA is always text + underline — never a filled button for luxury brands</div>
+        </div>
+        <div>
+          <div class="comp-rule">Color palette: use maximum 3 colors per execution, 2 is better</div>
+          <div class="comp-rule">Photography is full-bleed or not used — no boxed images with borders</div>
+          <div class="comp-rule">Brand name always appears in champagne — never white, never black alone</div>
+          <div class="comp-rule">Product name set in ultra-small ALL CAPS with wide tracking — it whispers, not shouts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== IN-HOUSE ===================== -->
+<div class="agency-section ih" id="inhouse">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-agency">In-House Creative Departments · Tampa</div>
+    <div class="section-title">Raymond James · BayCare · Bloomin' Brands</div>
+    <div class="section-desc">Brand governance over creativity. Consistency is the product. Photography must match existing brand photography guidelines. Typography follows locked systems. The design team's job is to execute the brand, not reinvent it.</div>
+  </div>
+
+  <div class="moodboard">
+    <div class="mb-title">01 — Raymond James Display Ad System</div>
+    <div class="mb-subtitle">Financial Services · 20-Size Display Template Library</div>
+
+    <div class="ref-board">
+      <div class="ref-cell" style="background:linear-gradient(160deg,#001a57,#003087);">
+        <div class="ref-label">RJ Navy</div><div class="ref-source">#003087 — brand primary</div>
+      </div>
+      <div class="ref-cell" style="background:linear-gradient(160deg,#B8962E,#8F7020);">
+        <div class="ref-label">RJ Gold</div><div class="ref-source">#B8962E — brand accent</div>
+      </div>
+      <div class="ref-cell" style="background:#EBF1FA; display:flex; align-items:center; padding:16px;">
+        <div>
+          <div style="font-family:'Playfair Display',serif; font-size:14px; color:#003087; font-weight:700; line-height:1.3; margin-bottom:8px;">Your financial future deserves a dedicated advisor.</div>
+          <div style="background:#003087; color:white; font-size:9px; font-weight:700; padding:6px 12px; border-radius:2px; width:fit-content; letter-spacing:1px; text-transform:uppercase;">Find an Advisor</div>
+        </div>
+        <div style="position:absolute; bottom:12px; right:12px;"><div class="ref-label" style="color:rgba(0,0,0,0.4);">Light BG Version</div></div>
+      </div>
+      <div class="ref-cell" style="background:#003087; display:flex; align-items:center; justify-content:center; padding:16px;">
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif; font-size:16px; color:white; font-weight:700; line-height:1.3; margin-bottom:8px;">Planning for what matters most.</div>
+          <div style="background:#B8962E; color:#003087; font-size:9px; font-weight:700; padding:6px 12px; border-radius:2px; width:fit-content; letter-spacing:1px; text-transform:uppercase; margin:0 auto;">Learn More</div>
+        </div>
+        <div style="position:absolute; bottom:12px; left:12px;"><div class="ref-label">Dark BG Version</div></div>
+      </div>
+    </div>
+
+    <div class="mb-grid">
+      <div class="palette-block">
+        <h5>Raymond James Brand Colors — LOCKED</h5>
+        <div class="swatches">
+          <div><div class="swatch" style="width:56px;height:56px;background:#003087;"></div><div class="swatch-info"><div class="swatch-name">RJ Navy</div><div class="swatch-hex">#003087</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#B8962E;"></div><div class="swatch-info"><div class="swatch-name">RJ Gold</div><div class="swatch-hex">#B8962E</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#EBF1FA;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><div class="swatch-name" style="color:#ccc;">Light Blue</div><div class="swatch-hex">#EBF1FA</div></div></div>
+          <div><div class="swatch" style="width:56px;height:56px;background:#FFFFFF;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-info"><div class="swatch-name" style="color:#ccc;">White</div><div class="swatch-hex">#FFFFFF</div></div></div>
+        </div>
+        <div style="margin-top:16px; background:rgba(184,150,46,0.1); border:1px solid rgba(184,150,46,0.3); border-radius:4px; padding:12px;">
+          <div style="font-size:10px; color:#B8962E; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">⚠ In-House Rule</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.6); line-height:1.6;">Never deviate from these exact hex values. In-house = brand stewardship. Your creativity lives in layout and copy, not in color.</div>
+        </div>
+      </div>
+
+      <div class="type-block">
+        <h5>Typography — Financial Brand Standard</h5>
+        <div class="type-pair">
+          <div class="type-role">Display Headline</div>
+          <div class="type-specimen" style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:white; line-height:1.2;">Your financial future deserves a dedicated advisor.</div>
+          <div class="type-meta">Playfair Display Bold · Benefit-led copy, not feature-led</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">Body / Supporting</div>
+          <div class="type-specimen" style="font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.7;">Fee-based planning. Independent thinking. Your goals, our guidance.</div>
+          <div class="type-meta">Inter Regular · Rule of three — three short phrases maximum</div>
+        </div>
+        <div class="type-pair">
+          <div class="type-role">CTA Button — Always Gold</div>
+          <div style="background:#B8962E; color:#003087; font-size:10px; font-weight:700; padding:10px 18px; border-radius:2px; width:fit-content; letter-spacing:1px; text-transform:uppercase; margin-top:8px;">Find an Advisor</div>
+          <div class="type-meta">Gold on Navy or Navy on Gold — never white button</div>
+        </div>
+      </div>
+
+      <div class="photo-dir">
+        <h5>Photography — Financial Services Standard</h5>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(184,150,46,0.15);">👥</div>
+          <div class="dir-text"><h6>Subject Matter</h6><p>An advisor and client in genuine conversation — not posed, facing camera. Real eye contact between people. The relationship, not the transaction.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(184,150,46,0.15);">🌇</div>
+          <div class="dir-text"><h6>Setting</h6><p>A home, a family moment, a retirement activity — not a bank branch or office. The product is the future, not the firm. Show the outcome, not the process.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(184,150,46,0.15);">🎞</div>
+          <div class="dir-text"><h6>Color Grade</h6><p>Warm neutral grade — slightly cooler than Glossier, slightly warmer than a corporate flat. Skin tones natural. No dramatic shadows. Reassurance, not drama.</p></div>
+        </div>
+        <div class="dir-item">
+          <div class="dir-icon" style="background:rgba(184,150,46,0.15);">❌</div>
+          <div class="dir-text"><h6>Never</h6><p>Stock photo handshakes, coins and bills, upward-trending graphs as the hero image, older white couple on a beach at sunset. Every financial brand already used all of these.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- GLOBAL COMPOSITION RULES -->
+  <div style="background:#0D0D1A; border-radius:8px; padding:40px; margin-top:20px;">
+    <div style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#B8962E; margin-bottom:20px;">Master Reference</div>
+    <div style="font-family:'Playfair Display',serif; font-size:28px; margin-bottom:24px;">Universal Ad Composition Rules</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+      <div>
+        <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#B8962E; margin-bottom:12px;">For Every Display Ad</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ Brand mark always visible, never smaller than 60px wide</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ One primary message per ad — never two headlines</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ One CTA button — never two calls to action</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ Minimum 16px padding on all sides for 300×250</div>
+      </div>
+      <div>
+        <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#B8962E; margin-bottom:12px;">For Every Print Piece</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ 0.125 in bleed on all sides — always</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ No critical content within 0.25 in of trim edge</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ Black text = 100K only, never CMYK rich black</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ Export PDF/X-1a for offset print, PDF/X-4 for digital print</div>
+      </div>
+      <div>
+        <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#B8962E; margin-bottom:12px;">For Social Media</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ Safe zone: keep all text within center 80% of frame</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ Text covers no more than 20% of image area (Meta rule)</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ Design at 2× resolution: 2160×2160 for 1080 output</div>
+        <div class="comp-rule" style="color:rgba(255,255,255,0.6); font-size:12px; line-height:1.7; margin-bottom:8px;">→ Test at phone size: thumbnail must read in 2 seconds</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="brand">Anel Henning</div>
+    <p style="margin-top:8px;">Graphic Designer · Tampa, FL · behance.net/anellehenning</p>
+  </div>
+  <div style="display:flex; gap:16px;">
+    <a href="portfolio_index.html" style="font-size:12px; color:rgba(255,255,255,0.4); text-decoration:none;">← Portfolio Index</a>
+    <a href="portfolio_sparxoo.html" style="font-size:12px; color:rgba(255,255,255,0.4); text-decoration:none;">Sparxoo</a>
+    <a href="portfolio_schifino_lee.html" style="font-size:12px; color:rgba(255,255,255,0.4); text-decoration:none;">Schifino Lee</a>
+    <a href="portfolio_bravada.html" style="font-size:12px; color:rgba(255,255,255,0.4); text-decoration:none;">Bravada</a>
+  </div>
+</footer>
+
+</body>
+</html>
