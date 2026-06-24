@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anel Henning — Tampa Ad Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0D1B2A; color: white; min-height: 100vh; }
+
+  .hero { padding: 100px 60px 80px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border: 80px solid rgba(201,168,76,0.06); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; top: 40px; right: 60px; width: 260px; height: 260px; border: 1px solid rgba(201,168,76,0.15); border-radius: 50%; }
+
+  .hero-tag { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #C9A84C; margin-bottom: 24px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; line-height: 1.0; margin-bottom: 32px; }
+  .hero h1 em { font-style: italic; color: #C9A84C; font-weight: 400; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.6); max-width: 680px; line-height: 1.85; margin-bottom: 50px; }
+
+  .hero-meta { display: flex; gap: 50px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .meta-stat .number { font-family: 'Playfair Display', serif; font-size: 40px; color: #C9A84C; font-weight: 700; line-height: 1; }
+  .meta-stat .label { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; }
+
+  .portfolio-grid { padding: 0 60px 100px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+  .agency-card { border-radius: 6px; overflow: hidden; text-decoration: none; color: white; display: block; transition: transform 0.2s ease; }
+  .agency-card:hover { transform: translateY(-4px); }
+
+  .card-visual { padding: 40px; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .card-visual::before { content: ''; position: absolute; bottom: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; }
+
+  .card-number { font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 900; opacity: 0.08; line-height: 1; }
+  .card-agency { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
+  .card-desc { font-size: 13px; opacity: 0.7; line-height: 1.7; }
+
+  .card-footer { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .card-pieces { font-size: 11px; opacity: 0.6; letter-spacing: 1px; }
+  .card-cta { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+  .card-cta::after { content: '→'; }
+
+  /* Card 1 — Sparxoo */
+  .card-1 .card-visual { background: linear-gradient(135deg, #0D1B2A 0%, #1a3050 100%); }
+  .card-1 .card-visual::before { background: rgba(201,168,76,0.08); }
+  .card-1 .card-agency { color: #C9A84C; }
+  .card-1 .card-footer { background: rgba(201,168,76,0.1); border-top: 1px solid rgba(201,168,76,0.2); }
+  .card-1 .card-cta { color: #C9A84C; }
+
+  /* Card 2 — Schifino Lee */
+  .card-2 .card-visual { background: linear-gradient(135deg, #1C2B3A 0%, #2E4560 100%); }
+  .card-2 .card-visual::before { background: rgba(181,69,27,0.1); }
+  .card-2 .card-agency { color: #E07A5A; }
+  .card-2 .card-footer { background: rgba(181,69,27,0.08); border-top: 1px solid rgba(181,69,27,0.2); }
+  .card-2 .card-cta { color: #E07A5A; }
+
+  /* Card 3 — Mojo */
+  .card-3 .card-visual { background: linear-gradient(135deg, #0D2233 0%, #143348 100%); }
+  .card-3 .card-visual::before { background: rgba(0,123,127,0.12); }
+  .card-3 .card-agency { color: #4ECDC4; }
+  .card-3 .card-footer { background: rgba(0,123,127,0.08); border-top: 1px solid rgba(0,123,127,0.2); }
+  .card-3 .card-cta { color: #4ECDC4; }
+
+  /* Card 4 — Bravada */
+  .card-4 .card-visual { background: linear-gradient(135deg, #1E2E21 0%, #2A3D2E 100%); }
+  .card-4 .card-visual::before { background: rgba(201,169,110,0.08); }
+  .card-4 .card-agency { color: #C9A96E; }
+  .card-4 .card-footer { background: rgba(201,169,110,0.08); border-top: 1px solid rgba(201,169,110,0.2); }
+  .card-4 .card-cta { color: #C9A96E; }
+
+  /* Card 5 — In-House (full width) */
+  .card-5 { grid-column: 1 / -1; }
+  .card-5 .card-visual { background: linear-gradient(135deg, #001a57 0%, #003087 50%, #0051A2 100%); min-height: 200px; flex-direction: row; align-items: center; gap: 60px; }
+  .card-5 .card-visual::before { background: rgba(184,150,46,0.08); }
+  .card-5 .card-text { flex: 1; }
+  .card-5 .card-agency { color: #B8962E; }
+  .card-5 .card-title { font-size: 36px; }
+  .card-5 .card-footer { background: rgba(184,150,46,0.08); border-top: 1px solid rgba(184,150,46,0.2); }
+  .card-5 .card-cta { color: #B8962E; }
+  .card-5 .card-number { font-size: 120px; opacity: 0.06; flex-shrink: 0; }
+
+  .spec-bar { background: rgba(255,255,255,0.04); border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 60px; }
+  .spec-bar h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: white; margin-bottom: 24px; font-weight: 400; }
+  .spec-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+  .spec-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 4px; }
+  .spec-item h5 { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #C9A84C; margin-bottom: 8px; }
+  .spec-item ul { list-style: none; }
+  .spec-item ul li { font-size: 11px; color: rgba(255,255,255,0.55); padding: 3px 0; line-height: 1.5; }
+
+  .footer-bar { padding: 40px 60px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-bar .brand { font-family: 'Playfair Display', serif; font-size: 20px; color: white; }
+  .footer-bar .links { display: flex; gap: 24px; }
+  .footer-bar .links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; letter-spacing: 1px; }
+  .footer-bar .links a:hover { color: #C9A84C; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Tampa, FL · Graphic Designer · Ad Campaign Specialist</div>
+  <h1>Anel Henning<br><em>Portfolio</em></h1>
+  <p>Five agency-specific campaign portfolios, each custom-built to match the creative standards, client types, and ad placement specs of Tampa's top agencies and in-house teams. All work is original spec — built from my design foundation in UI/UX, brand identity, and Adobe daily challenge discipline.</p>
+  <div class="hero-meta">
+    <div class="meta-stat"><div class="number">5</div><div class="label">Target Agencies</div></div>
+    <div class="meta-stat"><div class="number">25</div><div class="label">Portfolio Pieces</div></div>
+    <div class="meta-stat"><div class="number">80+</div><div class="label">Ad Formats Covered</div></div>
+    <div class="meta-stat"><div class="number">100%</div><div class="label">Original Spec Work</div></div>
+  </div>
+</div>
+
+<div class="portfolio-grid">
+
+  <a href="portfolio_sparxoo.html" class="agency-card card-1">
+    <div class="card-visual">
+      <div class="card-number">01</div>
+      <div>
+        <div class="card-agency">Brand Strategy + Digital</div>
+        <div class="card-title">Sparxoo</div>
+        <div class="card-desc">Regional brand campaigns, digital display, social advertising, email marketing. B2B tech, healthcare, tourism, and DTC brands.</div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-pieces">5 Portfolio Pieces · Display, Social, Email</div>
+      <div class="card-cta">View Portfolio</div>
+    </div>
+  </a>
+
+  <a href="portfolio_schifino_lee.html" class="agency-card card-2">
+    <div class="card-visual">
+      <div class="card-number">02</div>
+      <div>
+        <div class="card-agency">Full-Service Integrated</div>
+        <div class="card-title">Schifino Lee</div>
+        <div class="card-desc">Print, OOH billboard, broadcast, digital campaigns for established Tampa brands. Healthcare, real estate, sports, hospitality.</div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-pieces">5 Portfolio Pieces · Print, OOH, Display, Broadcast</div>
+      <div class="card-cta">View Portfolio</div>
+    </div>
+  </a>
+
+  <a href="portfolio_mojo_media.html" class="agency-card card-3">
+    <div class="card-visual">
+      <div class="card-number">03</div>
+      <div>
+        <div class="card-agency">Inbound Marketing · HubSpot</div>
+        <div class="card-title">Mojo Media Labs</div>
+        <div class="card-desc">B2B landing pages, lead magnet content, email nurture sequences, LinkedIn campaigns, data visualization for SaaS and professional services clients.</div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-pieces">5 Portfolio Pieces · Landing Pages, Email, Content, LinkedIn</div>
+      <div class="card-cta">View Portfolio</div>
+    </div>
+  </a>
+
+  <a href="portfolio_bravada.html" class="agency-card card-4">
+    <div class="card-visual">
+      <div class="card-number">04</div>
+      <div>
+        <div class="card-agency">Boutique Brand Identity</div>
+        <div class="card-title">Bravada International</div>
+        <div class="card-desc">Luxury brand systems, packaging design, logo suites, brand refreshes, and retail brand experience for premium consumer and lifestyle brands.</div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-pieces">5 Portfolio Pieces · Identity, Packaging, Luxury, Retail</div>
+      <div class="card-cta">View Portfolio</div>
+    </div>
+  </a>
+
+  <a href="portfolio_inhouse.html" class="agency-card card-5">
+    <div class="card-visual">
+      <div class="card-number">05</div>
+      <div class="card-text">
+        <div class="card-agency">In-House Creative Departments</div>
+        <div class="card-title">Raymond James · BayCare · Bloomin' Brands</div>
+        <div class="card-desc">Brand governance, internal communications, menu systems, social media templates, and scalable display ad production for large Tampa employers with established in-house creative teams.</div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-pieces">5 Portfolio Pieces · Brand Systems, Templates, Production, Internal Comms</div>
+      <div class="card-cta">View Portfolio</div>
+    </div>
+  </a>
+
+</div>
+
+<div class="spec-bar">
+  <h3>Ad Formats Covered Across This Portfolio</h3>
+  <div class="spec-grid">
+    <div class="spec-item">
+      <h5>Google Display</h5>
+      <ul>
+        <li>300 × 250 Medium Rectangle</li>
+        <li>728 × 90 Leaderboard</li>
+        <li>160 × 600 Wide Skyscraper</li>
+        <li>300 × 600 Half Page</li>
+        <li>970 × 250 Billboard</li>
+        <li>320 × 50 Mobile Banner</li>
+        <li>336 × 280 Large Rectangle</li>
+      </ul>
+    </div>
+    <div class="spec-item">
+      <h5>Social Media</h5>
+      <ul>
+        <li>1080 × 1080 Instagram Feed</li>
+        <li>1080 × 1920 Story Ad</li>
+        <li>1200 × 628 Facebook Link</li>
+        <li>1200 × 627 LinkedIn</li>
+        <li>1000 × 1500 Pinterest Pin</li>
+        <li>1080 × 1350 Instagram Portrait</li>
+      </ul>
+    </div>
+    <div class="spec-item">
+      <h5>Print</h5>
+      <ul>
+        <li>8.5 × 11 in Magazine Full Page</li>
+        <li>10.5 × 7 in Newspaper Half</li>
+        <li>17 × 11 in Spread</li>
+        <li>18 × 24 in Event Poster</li>
+        <li>5 × 7 in Direct Mail</li>
+        <li>3.5 × 2 in Business Card</li>
+      </ul>
+    </div>
+    <div class="spec-item">
+      <h5>Out of Home</h5>
+      <ul>
+        <li>14 × 48 ft Billboard</li>
+        <li>68.5 × 47.5 in Bus Shelter</li>
+        <li>48 × 72 in Storefront</li>
+        <li>1920 × 1080 Digital OOH</li>
+        <li>Arena / Event Display</li>
+      </ul>
+    </div>
+    <div class="spec-item">
+      <h5>Digital / Other</h5>
+      <ul>
+        <li>600 px Email Template</li>
+        <li>1440 px Landing Page</li>
+        <li>1920 × 1080 TV / Broadcast</li>
+        <li>HTML5 Animated Banners</li>
+        <li>Figma Component Libraries</li>
+        <li>InDesign Template Systems</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer-bar">
+  <div class="brand">Anel Henning</div>
+  <div class="links">
+    <a href="https://www.behance.net/anellehenning">Behance Portfolio</a>
+    <a href="portfolio_sparxoo.html">Sparxoo</a>
+    <a href="portfolio_schifino_lee.html">Schifino Lee</a>
+    <a href="portfolio_mojo_media.html">Mojo Media Labs</a>
+    <a href="portfolio_bravada.html">Bravada</a>
+    <a href="portfolio_inhouse.html">In-House</a>
+  </div>
+</div>
+
+</body>
+</html>
